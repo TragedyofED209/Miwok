@@ -26,7 +26,9 @@ import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
 
-    /** Handles playback of all the sound files */
+    /**
+     * Handles playback of all the sound files
+     */
     private MediaPlayer mMediaPlayer;
     /**
      * This listener gets triggered when the {@link MediaPlayer} has completed
@@ -93,6 +95,12 @@ public class PhrasesActivity extends AppCompatActivity {
                 mMediaPlayer.setOnCompletionListener(mCompletionListener);
             }
         });
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // Release media when activity is stopped
+        releaseMediaPlayer();
     }
     /**
      * Clean up the media player by releasing its resources.
